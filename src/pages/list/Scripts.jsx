@@ -1,7 +1,8 @@
 import React from "react";
+import Table from "~/components/Table/Table";
 
 const Scripts = () => {
-  return <div></div>;
+  return <Table />;
 };
 
 export default Scripts;

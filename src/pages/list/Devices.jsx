@@ -1,7 +1,12 @@
 import React from "react";
+import Table from "~/components/Table/Table";
 
 const Devices = () => {
-  return <div></div>;
+  return (
+    <>
+      <Table />
+    </>
+  );
 };
 
 export default Devices;

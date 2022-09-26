@@ -12,6 +12,8 @@ import {
   Typography,
   useTheme,
 } from "@material-ui/core";
+import { Link, useLocation } from "react-router-dom";
+
 import clsx from "clsx";
 import React from "react";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -20,8 +22,28 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import { MuiStylesSidebar } from "../MuiStyles/MuiStyles";
+import path from "../../resources/path";
+import ListIcon from "@material-ui/icons/List";
+import ListAltIcon from "@material-ui/icons/ListAlt";
+const Sidebar = ({ children }) => {
+  const mainNav = [
+    {
+      name: "Danh sách kịch bản",
+      path: path.SCRIPTS,
+      icon: <ListIcon className="icon" />,
+    },
+    {
+      name: "Danh sách thiết bị",
+      path: path.DEVICES,
+      icon: <ListAltIcon className="icon" />,
+    },
+    {
+      name: "Danh sách nhóm thiết bị",
+      path: path.GROUPDEVICES,
+      icon: <ListAltIcon className="icon" />,
+    },
+  ];
 
-const Sidebar = () => {
   const classes = MuiStylesSidebar();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -83,23 +105,20 @@ const Sidebar = () => {
         </div>
         <Divider />
         <List>
-          {[
-            "Danh sách kịch bản",
-            "Danh sách nhóm thiết bị",
-            "Danh sách thiết bị",
-          ].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
+          {mainNav.map((item, index) => (
+            <Link key={index} to={item.path}>
+              <ListItem button key={item}>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.name} />
+              </ListItem>
+            </Link>
           ))}
         </List>
         <Divider />
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
+        {children}
       </main>
     </div>
   );

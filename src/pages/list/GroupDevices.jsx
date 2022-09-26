@@ -1,7 +1,12 @@
 import React from "react";
+import Table from "~/components/Table/Table";
 
 const GroupDevices = () => {
-  return <div></div>;
+  return (
+    <>
+      <Table />
+    </>
+  );
 };
 
 export default GroupDevices;

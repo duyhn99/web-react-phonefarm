@@ -1,6 +1,6 @@
 module.exports = {
-  MAIN: "/main",
   LOGIN: "/",
   SCRIPTS: "/danhsachkichban",
+  GROUPDEVICES: "/danhsachnhomthietbi",
   DEVICES: "/danhsachthietbi",
 };
