@@ -6,43 +6,42 @@ import {
   IconButton,
   List,
   ListItem,
-  ListItemIcon,
-  ListItemText,
   Toolbar,
   Typography,
   useTheme,
 } from "@material-ui/core";
 import { Link, useLocation } from "react-router-dom";
+import DescriptionOutlinedIcon from "@material-ui/icons/DescriptionOutlined";
+import ImportantDevicesOutlinedIcon from "@material-ui/icons/ImportantDevicesOutlined";
+import DeveloperBoardOutlinedIcon from "@material-ui/icons/DeveloperBoardOutlined";
 
 import clsx from "clsx";
 import React from "react";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
 import { MuiStylesSidebar } from "../MuiStyles/MuiStyles";
 import path from "../../resources/path";
-import ListIcon from "@material-ui/icons/List";
-import ListAltIcon from "@material-ui/icons/ListAlt";
 const Sidebar = ({ children }) => {
   const mainNav = [
     {
       name: "Danh sách kịch bản",
       path: path.SCRIPTS,
-      icon: <ListIcon className="icon" />,
+      icon: <DescriptionOutlinedIcon />,
     },
     {
       name: "Danh sách thiết bị",
       path: path.DEVICES,
-      icon: <ListAltIcon className="icon" />,
+      icon: <DeveloperBoardOutlinedIcon />,
     },
     {
       name: "Danh sách nhóm thiết bị",
       path: path.GROUPDEVICES,
-      icon: <ListAltIcon className="icon" />,
+      icon: <ImportantDevicesOutlinedIcon />,
     },
   ];
+  const { pathname } = useLocation();
+  const activeNav = mainNav.findIndex((e) => e.path === pathname);
 
   const classes = MuiStylesSidebar();
   const theme = useTheme();
@@ -106,10 +105,14 @@ const Sidebar = ({ children }) => {
         <Divider />
         <List>
           {mainNav.map((item, index) => (
-            <Link key={index} to={item.path}>
-              <ListItem button key={item}>
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.name} />
+            <Link
+              key={index}
+              to={item.path}
+              className={`${index === activeNav ? "active" : ""}`}
+            >
+              <ListItem button key={item} className={classes.listItem}>
+                {item.icon}
+                {item.name}
               </ListItem>
             </Link>
           ))}

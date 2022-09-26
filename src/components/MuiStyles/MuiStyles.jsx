@@ -1,12 +1,12 @@
-import { makeStyles } from "@material-ui/core";
-
-const drawerWidth = 200;
+import { createTheme, makeStyles } from "@material-ui/core";
+const drawerWidth = 240;
 
 export const MuiStylesSidebar = makeStyles((theme) => ({
   root: {
     display: "flex",
   },
   appBar: {
+    backgroundColor: "#7209b7",
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
@@ -23,6 +23,7 @@ export const MuiStylesSidebar = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: 36,
+    padding: 4,
   },
   hide: {
     display: "none",
@@ -45,10 +46,7 @@ export const MuiStylesSidebar = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     overflowX: "hidden",
-    width: theme.spacing(7) + 1,
-    [theme.breakpoints.up("sm")]: {
-      width: theme.spacing(9) + 1,
-    },
+    width: theme.spacing(6),
   },
   toolbar: {
     display: "flex",
@@ -61,6 +59,17 @@ export const MuiStylesSidebar = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
+  },
+  listItem: {
+    color: "#333",
+    fontSize: 16,
+    gap: 10,
+    fontWeight: 500,
+    "&:hover": {
+      backgroundColor: "#b298dc",
+      color: "#7209b7",
+      transition: "color 100ms ease-out",
+    },
   },
 }));
 
@@ -84,5 +93,42 @@ export const MuiStylesLogin = makeStyles((theme) => ({
   },
   errors: {
     color: "#dc3545",
+    fontSize: 12,
   },
 }));
+
+export const MuiStylesButton = makeStyles((theme) => ({
+  button: {
+    outline: "none",
+    border: "none",
+    padding: 8,
+    color: "#fff",
+    borderRadius: 4,
+  },
+  buttonSuccess: {
+    backgroundColor: "#8ac926",
+  },
+  buttonEdit: {
+    backgroundColor: "#ffca3a",
+  },
+  buttonDanger: {
+    backgroundColor: "#ff595e",
+  },
+}));
+
+export const getMuiTheme = () =>
+  createTheme({
+    overrides: {
+      MuiTableCell: {
+        head: {
+          backgroundColor: "#4361ee !important",
+          color: "#FFF !important",
+        },
+      },
+      MuiButton: {
+        label: {
+          color: "#FFF !important",
+        },
+      },
+    },
+  });
