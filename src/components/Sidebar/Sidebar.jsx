@@ -147,7 +147,7 @@ const Sidebar = ({ children }) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Mini variant drawer
+            Phone Farm
           </Typography>
         </Toolbar>
       </AppBar>

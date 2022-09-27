@@ -3,7 +3,8 @@ import MUIDataTable from "mui-datatables";
 import { getMuiTheme, MuiStylesButton } from "../MuiStyles/MuiStyles";
 import { ThemeProvider } from "@material-ui/core";
 
-const Table = () => {
+const Table = (props) => {
+  console.log(props);
   const classes = MuiStylesButton();
 
   const columns = [
@@ -54,21 +55,6 @@ const Table = () => {
     },
   ];
 
-  const data = [
-    ["Joe James", "Test Corp", "Yonkers", "NY"],
-    ["John Walsh", "Test Corp", "Hartford", "CT"],
-    ["Bob Herm", "Test Corp", "Tampa", "FL"],
-    ["James Houston", "Test Corp", "Dallas", "TX"],
-    ["Joe James1", "Test Corp", "Yonkers", "NY"],
-    ["John Walsh1", "Test Corp", "Hartford", "CT"],
-    ["Bob Herm1", "Test Corp", "Tampa", "FL"],
-    ["James Houston1", "Test Corp", "Dallas", "TX"],
-    ["Joe James2", "Test Corp", "Yonkers", "NY"],
-    ["John Walsh2", "Test Corp", "Hartford", "CT"],
-    ["Bob Herm2", "Test Corp", "Tampa", "FL"],
-    ["James Houston2", "Test Corp", "Dallas", "TX"],
-  ];
-
   const options = {
     download: false,
     print: false,
@@ -84,10 +70,10 @@ const Table = () => {
   return (
     <ThemeProvider theme={getMuiTheme()}>
       <MUIDataTable
-        title={"Employee List"}
-        data={data}
-        columns={columns}
-        options={options}
+        title={props.title}
+        data={props.data}
+        columns={props.columns}
+        options={props.options}
       />
     </ThemeProvider>
   );
