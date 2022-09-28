@@ -1,5 +1,11 @@
 .select {
   &-contanier {
     display: flex;
+    margin-bottom: 10px;
+  }
+
+  &__control {
+    min-width: 20rem;
+    margin-right: 2rem;
   }
 }

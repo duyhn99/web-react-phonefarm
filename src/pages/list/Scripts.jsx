@@ -1,4 +1,4 @@
-import { Toolbar, Paper, makeStyles } from "@material-ui/core";
+import { Toolbar, Paper, makeStyles, Button } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import Controls from "~/components/controls/Controls";
 import Table from "~/components/Table/Table";
@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     width: "75%",
   },
   newButton: {
-    color: "red",
+    color: "red !important",
     position: "absolute",
     right: "0px",
   },
@@ -94,18 +94,24 @@ const Scripts = () => {
   };
   return (
     <>
-      <Toolbar>
+      {/* <Toolbar>
         <Controls.Button
           text="Add New"
           variant="outlined"
           startIcon={<AddIcon />}
           className={classesMaterial.newButton}
-          onClick={() => {
-            setOpenPopup(true);
-            // setRecordForEdit(null);
-          }}
+          
         />
-      </Toolbar>
+      </Toolbar> */}
+      <button
+        className="add-btn"
+        onClick={() => {
+          setOpenPopup(true);
+          // setRecordForEdit(null);
+        }}
+      >
+        Add new
+      </button>
       <Table
         data={data}
         columns={columns}

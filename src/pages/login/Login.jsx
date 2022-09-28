@@ -98,7 +98,7 @@ export default function Login() {
             color="primary"
             className={classes.submit}
           >
-            {isSubmitting ? <div className="progress"></div> : "Submit"}
+            {isSubmitting ? <div className="loader"></div> : "Submit"}
           </Button>
         </form>
       </div>

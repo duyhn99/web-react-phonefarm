@@ -1,13 +1,9 @@
+import { Button, TextField } from "@material-ui/core";
 import React, { useState } from "react";
-import FormPopup from "~/components/FormPopup/FormPopup";
 import Popup from "~/components/Popup/Popup";
 import Table from "~/components/Table/Table";
-import {
-  getMuiTheme,
-  MuiStylesButton,
-} from "../../components/MuiStyles/MuiStyles";
+
 const GroupDevices = () => {
-  const classes = MuiStylesButton();
   const [openPopup, setOpenPopup] = useState(false);
 
   const data = [
@@ -54,6 +50,20 @@ const GroupDevices = () => {
       setOpenPopup(true);
     },
   };
+
+  const options2 = {
+    count: 1,
+    download: false,
+    print: false,
+    filter: false,
+    sort: true,
+    rowsPerPage: 5,
+    viewColumns: false,
+    search: false,
+    onRowClick: (rowData, rowMeta) => {
+      setOpenPopup(true);
+    },
+  };
   return (
     <>
       <Table
@@ -68,7 +78,11 @@ const GroupDevices = () => {
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
       >
-        <Table data={data2} columns={columns} options={options} title="" />
+        <div className="popup-input">
+          <TextField label="Standard" />
+          <button className="popup-button">Primary</button>
+        </div>
+        <Table data={data2} columns={columns} options={options2} />
       </Popup>
     </>
   );
