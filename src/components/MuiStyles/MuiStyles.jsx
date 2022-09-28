@@ -36,10 +36,10 @@ export const MuiStylesButton = makeStyles((theme) => ({
     backgroundColor: "#8ac926",
   },
   buttonEdit: {
-    backgroundColor: "#ffca3a",
+    backgroundColor: "#4c4a42",
   },
   buttonDanger: {
-    backgroundColor: "#ff595e",
+    backgroundColor: "#f20d0d",
   },
 }));
 

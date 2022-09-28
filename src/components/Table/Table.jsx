@@ -36,7 +36,7 @@ const Table = (props) => {
                   e.stopPropagation();
                 }}
               >
-                Delete
+                Xoá{" "}
               </button>
               &nbsp;
               <button
@@ -46,7 +46,7 @@ const Table = (props) => {
                   alert(`Clicked "Edit" for row ${tableMeta.rowIndex}`);
                 }}
               >
-                Edit
+                Sửa
               </button>
             </>
           );

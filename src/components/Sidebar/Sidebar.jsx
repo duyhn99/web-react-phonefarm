@@ -18,7 +18,7 @@ import ImportantDevicesOutlinedIcon from "@material-ui/icons/ImportantDevicesOut
 import DeveloperBoardOutlinedIcon from "@material-ui/icons/DeveloperBoardOutlined";
 import path from "../../resources/path";
 import { Link, useLocation } from "react-router-dom";
-
+import logOut from "../../assets/images/menu/logout.svg";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -84,8 +84,8 @@ const useStyles = makeStyles((theme) => ({
     gap: 18,
     fontWeight: 500,
     "&:hover": {
-      backgroundColor: "#b298dc",
-      color: "#7209b7",
+      backgroundColor: "rgb(227 168 33)",
+      color: "rgb(64 86 117)",
       transition: "color 100ms ease-out",
     },
   },
@@ -132,7 +132,7 @@ const Sidebar = ({ children }) => {
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
-        style={{ background: "#8338ec" }}
+        style={{ background: "rgb(36 116 225)" }}
       >
         <Toolbar>
           <IconButton
@@ -146,9 +146,16 @@ const Sidebar = ({ children }) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
+          <Typography variant="h6" noWrap className="navbar__header">
             Phone Farm
           </Typography>
+          <div className="navbar__user">
+            <div className="navbar__text">Xin chào! Trọng Nhân</div>
+            <div className="navbar__text button">
+              <img src={logOut} alt="" style={{ scale: "0.5" }} />
+              Đăng xuất
+            </div>
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer
