@@ -1,28 +1,10 @@
-import { Toolbar, Paper, makeStyles, Button } from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
-import Controls from "~/components/controls/Controls";
 import Table from "~/components/Table/Table";
 import { MuiStylesButton } from "../../components/MuiStyles/MuiStyles";
 import React, { useState } from "react";
 import Popup from "~/components/Popup/Popup";
 import FormPopup from "~/components/FormPopup/FormPopup";
-const useStyles = makeStyles((theme) => ({
-  pageContent: {
-    margin: theme.spacing(5),
-    padding: theme.spacing(3),
-  },
-  searchInput: {
-    width: "75%",
-  },
-  newButton: {
-    color: "red !important",
-    position: "absolute",
-    right: "0px",
-  },
-}));
-const Scripts = () => {
-  const classesMaterial = useStyles();
 
+const Scripts = () => {
   const [openPopup, setOpenPopup] = useState(false);
   const classes = MuiStylesButton();
 
@@ -94,15 +76,6 @@ const Scripts = () => {
   };
   return (
     <>
-      {/* <Toolbar>
-        <Controls.Button
-          text="Add New"
-          variant="outlined"
-          startIcon={<AddIcon />}
-          className={classesMaterial.newButton}
-          
-        />
-      </Toolbar> */}
       <button
         className="add-btn"
         onClick={() => {

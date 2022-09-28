@@ -12,6 +12,8 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { MuiStylesLogin } from "~/components/MuiStyles/MuiStyles";
+import { useHistory } from "react-router-dom";
+import path from "~/resources/path";
 
 const schema = yup
   .object({
@@ -21,6 +23,7 @@ const schema = yup
   .required();
 
 export default function Login() {
+  const history = useHistory();
   const classes = MuiStylesLogin();
   const {
     register,
@@ -33,8 +36,7 @@ export default function Login() {
   const onSubmit = (values) => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve();
-        console.log(values);
+        history.push(path.SCRIPTS);
       }, 3000);
     });
   };
