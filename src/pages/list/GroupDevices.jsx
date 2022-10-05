@@ -7,20 +7,11 @@ const GroupDevices = () => {
   const [openPopup, setOpenPopup] = useState(false);
   const [check, setCheck] = useState();
 
-  const data =
-    // ["Joe James", "Test Corp", "Yonkers"],
-    // ["John Walsh", "Test Corp", "Hartford"],
-    // ["Bob Herm", "Test Corp", "Tampa"],
-    // ["James Houston", "Test Corp", "Dallas"],
-    // ["Joe James1", "Test Corp", "Yonkers"],
-    // ["John Walsh1", "Test Corp", "Hartford"],
-    // ["Bob Herm1", "Test Corp", "Tampa"],
-    // ["James Houston1", "Test Corp", "Dallas"],
-    // ["Joe James2", "Test Corp", "Yonkers"],
-    // ["John Walsh2", "Test Corp", "Hartford"],
-    // ["Bob Herm2", "Test Corp", "Tampa"],
-    // ["James Houston2", "Test Corp", "Dallas"],
-    [{ name: "Joe James", userCreated: "Joe James", created: "Joe James" }];
+  const data = [
+    { name: "Joe James", userCreated: "Joe James", created: "Joe James" },
+    { name: "Trọng Nhân", userCreated: "Duy", created: "Joe James" },
+    { name: "Joe James", userCreated: "Joe James", created: "Joe James" },
+  ];
 
   const data2 = [
     {
@@ -69,17 +60,17 @@ const GroupDevices = () => {
 
   const [arrChecked, setArrChecked] = useState([]);
 
-  useEffect(() => {
-    if (check) {
-      setArrChecked(
-        data2.filter((e, index) => {
-          if (index < check) {
-            return e;
-          }
-        })
-      );
-    }
-  }, [check]);
+  // useEffect(() => {
+  //   if (check) {
+  //     setArrChecked(
+  //       data2.filter((e, index) => {
+  //         if (index < check) {
+  //           return e;
+  //         }
+  //       })
+  //     );
+  //   }
+  // }, [check]);
 
   const newData = data2.map((e, index) => {
     return {
@@ -89,10 +80,6 @@ const GroupDevices = () => {
       created: e.created,
     };
   });
-  // ["John Walsh", "Test Corp", "Hartford"],
-  // ["Bob Herm", "Test Corp", "Tampa"],
-  // ["James Houston", "Test Corp", "Dallas"],
-  // ["Joe James1", "Test Corp", "Yonkers"],
 
   const columns = [
     {
@@ -108,7 +95,7 @@ const GroupDevices = () => {
               checked={
                 arrChecked.findIndex((e) => {
                   return e.id == value?.id;
-                }) != -1
+                }) !== -1
                   ? true
                   : false
               }
@@ -132,7 +119,23 @@ const GroupDevices = () => {
       label: "Ngày tạo",
     },
   ];
+
+  const columns2 = [
+    {
+      name: "name",
+      label: "Tên nhóm thiết bị",
+    },
+    {
+      name: "userCreated",
+      label: "Người tạo ",
+    },
+    {
+      name: "created",
+      label: "Ngày tạo",
+    },
+  ];
   const options = {
+    selectableRows: "none",
     download: false,
     print: false,
     filter: false,
@@ -141,9 +144,14 @@ const GroupDevices = () => {
     onRowClick: (rowData, rowMeta) => {
       setOpenPopup(true);
     },
+    rowSelected: (rowData, rowMeta) => {},
   };
 
   const options2 = {
+    rowsSelected: (rowData, rowMeta) => {
+      console.log(rowData);
+      console.log(rowMeta);
+    },
     download: false,
     selectableRows: "none",
     print: false,
@@ -163,9 +171,9 @@ const GroupDevices = () => {
 
   const handleChange = (id, data) => {
     let checkChecked = arrChecked.findIndex((e) => {
-      return e.id == id;
+      return e.id === id;
     });
-    if (checkChecked != -1) {
+    if (checkChecked !== -1) {
       setArrChecked(
         arrChecked.filter((e) => {
           return e.id != id;
@@ -175,14 +183,22 @@ const GroupDevices = () => {
       setArrChecked((arrChecked) => [...arrChecked, data]);
     }
   };
-
-  console.log(arrChecked);
-
+  const handleClick = (e) => {
+    if (check) {
+      setArrChecked(
+        data2.filter((e, index) => {
+          if (index < check) {
+            return e;
+          }
+        })
+      );
+    }
+  };
   return (
     <>
       <Table
         data={data}
-        columns={columns}
+        columns={columns2}
         options={options}
         title="Danh sách nhóm thiết bị"
       />
@@ -194,7 +210,9 @@ const GroupDevices = () => {
       >
         <div className="popup-input">
           <TextField label="Standard" onChange={handeChangeInput} />
-          <button className="popup-button">Primary</button>
+          <button className="popup-button" onClick={handleClick}>
+            Chọn
+          </button>
         </div>
         <Table data={newData} columns={columns} options={options2} />
       </Popup>

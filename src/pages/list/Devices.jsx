@@ -58,14 +58,17 @@ const Devices = () => {
     },
   ];
   const options = {
+    selectableRows: true,
+
     download: false,
     print: false,
     filter: false,
     sort: true,
     rowsPerPage: 5,
-    onRowClick: (rowData, rowMeta) => {
-      console.log(rowData);
-      console.log(rowMeta);
+    onRowClick: (rowData, rowMeta) => {},
+    onRowSelectionChange: (index, rowData) => {
+      console.log("index", index);
+      console.log("rowdataa", rowData);
     },
   };
   return (

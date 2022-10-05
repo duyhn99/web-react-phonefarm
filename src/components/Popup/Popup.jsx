@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
   dialogTitle: {
     paddingRight: "0px",
   },
+  icon: {
+    backgroundColor: "#ef0051 !important",
+  },
 }));
 
 export default function Popup(props) {

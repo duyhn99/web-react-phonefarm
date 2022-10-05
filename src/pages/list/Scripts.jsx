@@ -93,6 +93,7 @@ const Scripts = () => {
     },
   ];
   const options = {
+    selectableRows: "none",
     download: false,
     print: false,
     filter: false,
